@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableHighlight, ImageBackground} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
+import { Dimensions } from 'react-native'
 
 const MenuScreen = ({navigation}) => {
     return (
@@ -13,7 +14,7 @@ const MenuScreen = ({navigation}) => {
                 </NavButton>
             </NavBar>
             <View style={styles.container}>
-                <ImageBackground source={require('../assets/back_menu.jpg')} style={{width: 370, height: 600}}>
+                <ImageBackground source={require('../assets/back_menu.jpg')} style={{width: '100%', height: Dimensions.get('window').height / 1.5}}>
                     <TouchableHighlight style={{position: 'absolute', top: 90, right: 230}} onPress={() => navigation.navigate('Home')} > 
                         <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
