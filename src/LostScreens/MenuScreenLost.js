@@ -9,7 +9,7 @@ const MenuScreen = ({navigation}) => {
           <View style={styles.miniConteiner}>
   
           <TouchableHighlight style={styles.submit2} onPress={() => navigation.navigate('Explore')} > 
-          <Image source={require('../assets/explore.png')} style={{width: 100, height: 100}} />
+          <Image source={require('../../assets/explore.png')} style={{width: 100, height: 100}} />
           </TouchableHighlight>
            <View style={styles.menuItems}>
               <Text style={styles.menuItem1}>Explore</Text>
@@ -18,7 +18,7 @@ const MenuScreen = ({navigation}) => {
           </View>
           <View style={styles.miniConteiner}>
             <TouchableHighlight style={styles.submit2} onPress={() => navigation.navigate('Practice')} > 
-              <Image source={require('../assets/combine.png')} style={{width: 100, height: 100}} />  
+              <Image source={require('../../assets/combine.png')} style={{width: 100, height: 100}} />  
             </TouchableHighlight>
             <View style={styles.menuItems}>
               <Text style={styles.menuItem1}>Combine</Text>
@@ -27,7 +27,7 @@ const MenuScreen = ({navigation}) => {
           </View>
           <View style={styles.miniConteiner}>
             <TouchableHighlight style={styles.submit2} onPress={() => navigation.navigate('Explore')} > 
-              <Image source={require('../assets/evaluate.png')} style={{width: 100, height: 100}} /> 
+              <Image source={require('../../assets/evaluate.png')} style={{width: 100, height: 100}} /> 
             </TouchableHighlight>
            
             <View style={styles.menuItems}>

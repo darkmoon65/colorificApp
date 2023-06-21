@@ -18,15 +18,15 @@ const ExploreScreen = ({navigation}) => {
     let onPress = async (color) =>{
       console.log('Loading Sound');
       if( color == 'red'){
-        const { sound } = await Audio.Sound.createAsync( require('../assets/red.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../../assets/red.mp4'));
         setSound(sound);
         await sound.playAsync();
       }else if ( color == 'blue'){
-        const { sound } = await Audio.Sound.createAsync( require('../assets/blue.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../../assets/blue.mp4'));
         setSound(sound);
         await sound.playAsync();
       }else {
-        const { sound } = await Audio.Sound.createAsync( require('../assets/yellow.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../../assets/yellow.mp4'));
         setSound(sound);
         await sound.playAsync();
       }
@@ -34,18 +34,18 @@ const ExploreScreen = ({navigation}) => {
    
     return (
       <View style={styles.container}>
-          <ImageBackground source={require('../assets/triangle.png')} style={{width: 350, height: 300}}>
+          <ImageBackground source={require('../../assets/triangle.png')} style={{width: 350, height: 300}}>
             <TouchableHighlight style={{position: 'absolute', top: 200, right: 100}} 
               onPress={ () => onPress('red')} > 
-              <Image source={require('../assets/sound.png')} style={{width: 30, height: 30}} />
+              <Image source={require('../../assets/sound.png')} style={{width: 30, height: 30}} />
             </TouchableHighlight>
             <TouchableHighlight style={{position: 'absolute', top: 200, right: 220}}
               onPress={ () => onPress('blue')} > 
-              <Image source={require('../assets/sound.png')} style={{width: 30, height: 30}} />
+              <Image source={require('../../assets/sound.png')} style={{width: 30, height: 30}} />
             </TouchableHighlight>
             <TouchableHighlight style={{position: 'absolute', top: 70, right: 165}}
               onPress={ () => onPress('yellow')} > 
-              <Image source={require('../assets/sound.png')} style={{width: 30, height: 30}} />
+              <Image source={require('../../assets/sound.png')} style={{width: 30, height: 30}} />
             </TouchableHighlight>
           </ImageBackground>
           <StatusBar style="auto" />

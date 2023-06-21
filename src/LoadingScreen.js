@@ -33,7 +33,6 @@ const LoadingScreen = ({navigation}) => {
       backgroundColor: 'green',
       borderColor: "#fff",
       width: 120,
-  
     },
     submitText: {
       color:'white',
