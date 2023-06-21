@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View, Image, TouchableHighlight, ImageBackground} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
-import { Dimensions } from 'react-native'
+import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
+import { Dimensions } from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
 
 const MenuScreen = ({navigation}) => {
     return (
@@ -38,10 +39,12 @@ const MenuScreen = ({navigation}) => {
             </View>
             <View style={styles.center}>
               <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <Text style={styles.submitText}>Aprender</Text>
+                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'red','blue']}>
+                  <Text style={styles.submitText}>Aprender</Text>
+                </LinearGradient>  
               </TouchableHighlight>
-            </View>
-        </View>
+           </View>
+          </View>
     );
   };
   const styles = StyleSheet.create({
@@ -66,8 +69,9 @@ const MenuScreen = ({navigation}) => {
       paddingBottom: 10,
       borderRadius: 10,
       borderWidth: 0,
-      backgroundColor: 'green',
-      borderColor: "#fff",
+      backgroundColor: '#0C9600',
+      borderColor: 'green',
+      borderWidth: 5,
       width: 220,
     },
     navBar: {
@@ -104,7 +108,7 @@ const MenuScreen = ({navigation}) => {
       backgroundColor: 'green',
       borderColor: "#fff",
       width: 120,
-    }
+    },
   });
   
 export default MenuScreen
