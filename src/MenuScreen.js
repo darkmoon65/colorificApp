@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 import { Dimensions } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
+import LottieView from 'lottie-react-native';
 
 const MenuScreen = ({navigation}) => {
     return (
@@ -39,12 +40,24 @@ const MenuScreen = ({navigation}) => {
             </View>
             <View style={styles.center}>
               <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'red','blue']}>
+                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'green','black']} 
+                 style={StyleSheet.absoluteFill}>
                   <Text style={styles.submitText}>Aprender</Text>
                 </LinearGradient>  
               </TouchableHighlight>
            </View>
+           <LottieView
+              source={require('../assets/questions.json')} 
+              autoPlay
+              loop
+            />
+            <LottieView
+              source={require('../assets/celebration.json')} 
+              autoPlay
+              loop
+            />
           </View>
+          
     );
   };
   const styles = StyleSheet.create({
@@ -57,7 +70,7 @@ const MenuScreen = ({navigation}) => {
       color: 'white',
     },
     container: {
-      padding: 20,
+      padding: 50,
       color: '#fff',
       //fontFamily: 'Arial'
     },
@@ -65,14 +78,17 @@ const MenuScreen = ({navigation}) => {
       marginRight: 40,
       marginLeft: 40,
       marginTop: 10,
-      paddingTop: 10,
+      paddingTop: 30,
       paddingBottom: 10,
       borderRadius: 10,
       borderWidth: 0,
       backgroundColor: '#0C9600',
-      borderColor: 'green',
+      borderColor: 'blue',
       borderWidth: 5,
       width: 220,
+    },
+    gradient:{
+      height: 200, 
     },
     navBar: {
         backgroundColor: '#fcf9a8',
