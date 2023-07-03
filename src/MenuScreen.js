@@ -37,6 +37,12 @@ const MenuScreen = ({navigation}) => {
                     </TouchableHighlight>
                 </ImageBackground>
                 <StatusBar style="auto" />
+               
+                <LottieView //IMÁGENES DE LOTTIE 
+                source={require('../assets/lottie/guinoEmoji.json')} 
+                autoPlay
+                loop
+                />
             </View>
             <View style={styles.center}>
               <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
@@ -46,16 +52,11 @@ const MenuScreen = ({navigation}) => {
                 </LinearGradient>  
               </TouchableHighlight>
            </View>
-           <LottieView
-              source={require('../assets/questions.json')} 
-              autoPlay
-              loop
-            />
-            <LottieView
-              source={require('../assets/celebration.json')} 
-              autoPlay
-              loop
-            />
+           
+
+
+            
+
           </View>
           
     );
