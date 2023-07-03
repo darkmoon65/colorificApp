@@ -1,6 +1,6 @@
 import { Audio } from 'expo-av';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, TouchableHighlight, ImageBackground, Text, TextInput} from 'react-native';
+import { StyleSheet, View, Image, TouchableHighlight, ImageBackground, Text, TextInput, TouchableOpacity} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
 
@@ -10,18 +10,33 @@ const FirstExploreScreen = ({navigation}) => {
     const [item1, setItem1] = useState("");
     const [item2, setItem2] = useState("");
     const [item3, setItem3] = useState("");
-    const [item4, setItem4] = useState("");
+    const [item4, setItem4] = useState("M");
     const [item5, setItem5] = useState("");
     const [item6, setItem6] = useState("");
     const [item7, setItem7] = useState("");
-    const [item8, setItem8] = useState("");
+    const [item8, setItem8] = useState("I");
     const [item9, setItem9] = useState("");
+    const [item10, setItem10] = useState("");
+    const [ocultarTexto, setOcultarTexto] = useState(true);
 
     let checkWrite = async (last) => {
+      setItem10(last)
       var escrito = item1 + item2 + item3 + item4 +item5 + item6 +item7 + item8 + item9 + last
 
       console.log(escrito)
-      if(escrito == "vermillion" ) console.log("Good y aparece modal")
+      if(escrito == "VERMILLION" ) {
+        setItem1("");
+        setItem2("");
+        setItem3("");
+        setItem5("");
+        setItem6("");
+        setItem7("");
+        setItem9("");
+        setItem10("");
+        setOcultarTexto(true);
+
+        navigation.navigate('Logro')
+      }
     }
     useEffect(() => {
       return sound
@@ -48,7 +63,10 @@ const FirstExploreScreen = ({navigation}) => {
         await sound.playAsync();
       }
     };
-   
+    let pressInputOpen = () => {
+      console.log("start")
+      setOcultarTexto(false)
+    }
     return (
       <View>
         <NavBar style={styles}>
@@ -59,58 +77,65 @@ const FirstExploreScreen = ({navigation}) => {
             </NavButton>
         </NavBar>
         <View style={styles.container}>
-            <View style={styles.center}>
-              <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <Text style={styles.submitText}>VERMILLION</Text>
-              </TouchableHighlight>
-              <View style={{paddingTop: 15}}>
-                <Text style={{fontSize: 25}}>Pronunciación: /vɚˈmɪl.jən/</Text>
-              </View>
-              <View style={{paddingTop: 15}}>
-                <Text style={{fontSize: 25}}>Traducción: Bermellón</Text>
+            {
+              ocultarTexto && (
+                <View style={styles.center}>
+                  <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
+                    <Text style={styles.submitText}>VERMILLION</Text>
+                  </TouchableHighlight>
+                  <View style={{paddingTop: 15}}>
+                    <Text style={{fontSize: 25}}>Pronunciación: /vɚˈmɪl.jən/</Text>
+                  </View>
+                  <View style={{paddingTop: 15}}>
+                    <Text style={{fontSize: 25}}>Traducción: Bermellón</Text>
+                  </View>
+                </View>
+              )
+            }        
+            <View style={styles.imagenAudio}>
+              <Image source={require('../assets/vermi.png')} style={{width: '60%', height: '100%'}}>
+              </Image>
+              <View style={{paddingTop:60, paddingLeft:30}}>
+                <TouchableHighlight
+                  onPress={ () => onPress('yellow')} > 
+                  <Image source={require('../assets/sound.png')} style={{width: 50, height: 50}} />
+                </TouchableHighlight>
               </View>
             </View>
             <View style={styles.center}>
-              <Image source={require('../assets/vermi.png')} style={{width: '60%', height: '68%'}}>
-              </Image>
               <View style={styles.oneLine}>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem1(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item1} onChangeText={(value) => setItem1(value)} onTouchStart={()=> pressInputOpen() } /> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem2(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item2} onChangeText={(value) => setItem2(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem3(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item3} onChangeText={(value) => setItem3(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem4(value)}/> 
+                  <Text style={styles.inputStatic}> M </Text> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem5(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item5} onChangeText={(value) => setItem5(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem6(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item6} onChangeText={(value) => setItem6(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem7(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item7} onChangeText={(value) => setItem7(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem8(value)}/> 
+                  <Text style={styles.inputStatic}> I </Text> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => setItem9(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item9} onChangeText={(value) => setItem9(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
                 <View> 
-                  <TextInput style={styles.input}  maxLength={1} onChangeText={(value) => checkWrite(value)}/> 
+                  <TextInput style={styles.input}  maxLength={1} value={item10} onChangeText={(value) => checkWrite(value)} onTouchStart={()=> pressInputOpen() }/> 
                 </View>
               </View>
             </View>
-
-            <TouchableHighlight style={{position: 'absolute', top: 70, right: 165}}
-                onPress={ () => onPress('yellow')} > 
-                <Image source={require('../assets/sound.png')} style={{width: 30, height: 30}} />
-              </TouchableHighlight>
             <StatusBar style="auto" />
         </View>
       </View>
@@ -120,7 +145,18 @@ const FirstExploreScreen = ({navigation}) => {
     input: {
       backgroundColor: "white",
       borderWidth: 1,
-      borderRadius: 5
+      borderRadius: 5,
+      padding: 3,
+      margin: 1
+    },
+    inputStatic:{
+      paddingTop: 5,
+      fontSize: 20
+    },
+    imagenAudio: {
+      flexDirection: 'row',
+      padding: 25,
+      height: 325
     },
     oneLine:{
       flexDirection: 'row',
