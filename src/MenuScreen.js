@@ -3,6 +3,7 @@ import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 import { Dimensions } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
+import LottieView from 'lottie-react-native';
 
 const MenuScreen = ({navigation}) => {
     return (
@@ -36,15 +37,25 @@ const MenuScreen = ({navigation}) => {
                     </TouchableHighlight>
                 </ImageBackground>
                 <StatusBar style="auto" />
+               
+                <LottieView //IMÁGENES DE LOTTIE 
+                source={require('../assets/lottie/guinoEmoji.json')} 
+                autoPlay
+                loop
+                />
             </View>
             <View style={styles.center}>
               <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'red','blue']}>
-                  <Text style={styles.submitText}>Aprender</Text>
+                <LinearGradient  
+                start={{x:0.5, y:0}} end={{x:0.5, y:1}} 
+                locations={[0, 1]} colors={[ '#2fb005','black']} 
+                        style={styles.gradient}>
+                  <Text style={styles.submitText }>Aprender</Text>
                 </LinearGradient>  
               </TouchableHighlight>
            </View>
           </View>
+          
     );
   };
   const styles = StyleSheet.create({
@@ -57,7 +68,7 @@ const MenuScreen = ({navigation}) => {
       color: 'white',
     },
     container: {
-      padding: 20,
+      padding: 50,
       color: '#fff',
       //fontFamily: 'Arial'
     },
@@ -65,14 +76,25 @@ const MenuScreen = ({navigation}) => {
       marginRight: 40,
       marginLeft: 40,
       marginTop: 10,
-      paddingTop: 10,
+      paddingTop: 30,
       paddingBottom: 10,
       borderRadius: 10,
       borderWidth: 0,
-      backgroundColor: '#0C9600',
-      borderColor: 'green',
+      backgroundColor: '#2fb005',
+      borderColor: '#1f7802',
       borderWidth: 5,
       width: 220,
+      overflow: 'hidden', 
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',  
+          
+    },
+    gradient:{
+      marginTop: 10,
+      flex: 10,
+      height: 50,
+      ...StyleSheet.absoluteFill,
     },
     navBar: {
         backgroundColor: '#fcf9a8',
@@ -84,7 +106,10 @@ const MenuScreen = ({navigation}) => {
     },
     submitText: {
       color:'white',
-      textAlign: 'center'
+      textAlign: 'center',
+      fontWeight: 'bold',
+      backgroundColor: 'transparent',
+
     },
     menuItems : {
       paddingLeft: 20
