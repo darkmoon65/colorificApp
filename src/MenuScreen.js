@@ -46,17 +46,14 @@ const MenuScreen = ({navigation}) => {
             </View>
             <View style={styles.center}>
               <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'green','black']} 
-                 style={StyleSheet.absoluteFill}>
-                  <Text style={styles.submitText}>Aprender</Text>
+                <LinearGradient  
+                start={{x:0.5, y:0}} end={{x:0.5, y:1}} 
+                locations={[0, 1]} colors={[ '#2fb005','black']} 
+                        style={styles.gradient}>
+                  <Text style={styles.submitText }>Aprender</Text>
                 </LinearGradient>  
               </TouchableHighlight>
            </View>
-           
-
-
-            
-
           </View>
           
     );
@@ -83,13 +80,21 @@ const MenuScreen = ({navigation}) => {
       paddingBottom: 10,
       borderRadius: 10,
       borderWidth: 0,
-      backgroundColor: '#0C9600',
-      borderColor: 'blue',
+      backgroundColor: '#2fb005',
+      borderColor: '#1f7802',
       borderWidth: 5,
       width: 220,
+      overflow: 'hidden', 
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',  
+          
     },
     gradient:{
-      height: 200, 
+      marginTop: 10,
+      flex: 10,
+      height: 50,
+      ...StyleSheet.absoluteFill,
     },
     navBar: {
         backgroundColor: '#fcf9a8',
@@ -101,7 +106,10 @@ const MenuScreen = ({navigation}) => {
     },
     submitText: {
       color:'white',
-      textAlign: 'center'
+      textAlign: 'center',
+      fontWeight: 'bold',
+      backgroundColor: 'transparent',
+
     },
     menuItems : {
       paddingLeft: 20
