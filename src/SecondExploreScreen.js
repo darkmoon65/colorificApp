@@ -47,7 +47,7 @@ const SecondExploreScreen = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.center}>
                 <View style={{paddingTop: 15}}>
-                    <Text style={{fontSize: 25}}>Escucha y selecciona</Text>
+                    <Text style={{fontFamily: 'BreeSerif', fontSize: 25}}>Escucha y selecciona</Text>
                 </View>
             </View>  
             <View style={styles.center}>
@@ -76,7 +76,9 @@ const SecondExploreScreen = ({navigation}) => {
             </View>
             <View style={styles.center}>
               <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'red','blue']}>
+              <LinearGradient  
+                start={{x:0.5, y:0}} end={{x:0.5, y:1}} locations={[0, 1]} colors={[ '#2fb005','black']} 
+                        style={styles.gradient}>
                   <Text style={styles.submitText}>Aprender</Text>
                 </LinearGradient>  
               </TouchableHighlight>
@@ -124,6 +126,12 @@ const SecondExploreScreen = ({navigation}) => {
       backgroundColor: 'green',
       borderColor: "#fff",
       width: 220,
+    },
+    gradient:{
+      marginTop: 10,
+      flex: 10,
+      height: 50,
+      ...StyleSheet.absoluteFill,
     },
     center:{
       alignItems: 'center',
