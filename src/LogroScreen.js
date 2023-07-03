@@ -2,9 +2,16 @@ import { StyleSheet, Text, View, Image, TouchableHighlight, ImageBackground} fro
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 import { Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
 import {LinearGradient} from 'expo-linear-gradient';
 
 const LogroScreen = ({navigation}) => {
+    useEffect( () => {
+        setTimeout(() => {
+            navigation.navigate('SecondExplore')
+        }, 4000);
+        }
+    )
     return (
         <View>
             <NavBar style={styles}>
@@ -16,23 +23,23 @@ const LogroScreen = ({navigation}) => {
             </NavBar>
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/WAY2.png')} style={{width: '100%', height: Dimensions.get('window').height / 1}}>
-                    <TouchableHighlight style={{position: 'absolute', top: 90, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                    <TouchableHighlight style={{position: 'absolute', top: 600, right: 280}} onPress={() => navigation.navigate('Home')} > 
+                        <Image source={require('../assets/1.png')} style={{width: 90, height: 90}} />
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 290, right: 230}} onPress={() => navigation.navigate('Practice')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                    <TouchableHighlight style={{position: 'absolute', top: 490, right: 80}} onPress={() => navigation.navigate('Practice')} > 
+                        <Image source={require('../assets/2.png')} style={{width: 90, height: 90}} />
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 490, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                    <TouchableHighlight style={{position: 'absolute', top: 350, right: 260}} onPress={() => navigation.navigate('Home')} > 
+                        <Image source={require('../assets/3.png')} style={{width: 90, height: 90}} />
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 90, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                    <TouchableHighlight style={{position: 'absolute', top: 250, right: 60}} onPress={() => navigation.navigate('Home')} > 
+                        <Image source={require('../assets/4.png')} style={{width: 90, height: 90}} />
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 290, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                    <TouchableHighlight style={{position: 'absolute', top: 120, right: 250}} onPress={() => navigation.navigate('Home')} > 
+                        <Image source={require('../assets/5.png')} style={{width: 90, height: 90}} />
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 490, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                    <TouchableHighlight style={{position: 'absolute', top: 50, right: 70}} onPress={() => navigation.navigate('Home')} > 
+                        <Image source={require('../assets/6.png')} style={{width: 90, height: 90}} />
                     </TouchableHighlight>
                 </ImageBackground>
                 <StatusBar style="auto" />

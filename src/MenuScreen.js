@@ -17,22 +17,22 @@ const MenuScreen = ({navigation}) => {
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/back_menu.jpg')} style={{width: '100%', height: Dimensions.get('window').height / 1.5}}>
                     <TouchableHighlight style={{position: 'absolute', top: 90, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
                     <TouchableHighlight style={{position: 'absolute', top: 290, right: 230}} onPress={() => navigation.navigate('Practice')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
                     <TouchableHighlight style={{position: 'absolute', top: 490, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
                     <TouchableHighlight style={{position: 'absolute', top: 90, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
                     <TouchableHighlight style={{position: 'absolute', top: 290, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
                     <TouchableHighlight style={{position: 'absolute', top: 490, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
+                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
                     </TouchableHighlight>
                 </ImageBackground>
                 <StatusBar style="auto" />

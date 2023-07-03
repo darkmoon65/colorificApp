@@ -7,6 +7,7 @@ import PracticeScreen from './src/LostScreens/PracticeScreenLost'
 import FirstExploreScreen from './src/FirstExploreScreen'
 import LoadingScreen from './src/LoadingScreen'
 import LogroScreen from './src/LogroScreen'
+import SecondExploreScreen from './src/SecondExploreScreen'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="FirstExplore"  component={FirstExploreScreen} />
         <Stack.Screen name="Practice"  component={PracticeScreen} />
         <Stack.Screen name="Logro"  component={LogroScreen} />
+        <Stack.Screen name="SecondExplore"  component={SecondExploreScreen} />
       </Stack.Navigator>
         
     </NavigationContainer>
