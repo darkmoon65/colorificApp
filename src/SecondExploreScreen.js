@@ -8,6 +8,11 @@ import {LinearGradient} from 'expo-linear-gradient';
 
 const SecondExploreScreen = ({navigation}) => {
     const [sound, setSound] = React.useState();
+    const [selectPrimero, setSelectPrimero] = React.useState(false);
+    const [selectSegundo, setSelectSegundo] = React.useState(false);
+    const [selectTercero, setSelectTercero] = React.useState(false);
+    const [selectCuarto, setSelectCuarto] = React.useState(false);
+    const [Opcion, setOpcion] = React.useState(0);
     // Data input
 
     useEffect(() => {
@@ -35,6 +40,26 @@ const SecondExploreScreen = ({navigation}) => {
         await sound.playAsync();
       }
     };
+    let checkResult = ()=> {
+      if(Opcion == 3){
+        navigation.navigate('Logro', {Intento: 2})
+      }else{
+        console.log("Intenta de nuevo")
+      }
+      
+    }
+    let limpiar = ()=> {
+      setSelectPrimero(false)
+      setSelectSegundo(false)
+      setSelectTercero(false)
+      setSelectCuarto(false)
+    }
+    let mark = (item)=> {
+      if(item == 1) limpiar() ,  setSelectPrimero(true), setOpcion(1);
+      else if(item == 2) limpiar(), setSelectSegundo(true), setOpcion(2);
+      else if(item == 3) limpiar(), setSelectTercero(true), setOpcion(3);
+      else if(item == 4) limpiar(), setSelectCuarto(true), setOpcion(4);
+    }
     return (
       <View>
         <NavBar style={styles}>
@@ -59,26 +84,57 @@ const SecondExploreScreen = ({navigation}) => {
               </View>
             </View>
             <View style={styles.center}>
-                <ImageBackground source={require('../assets/opc_n.png')} style={{width: '100%', height: Dimensions.get('window').height / 1.5}}>
-                    <TouchableHighlight style={{position: 'absolute', top: 90, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
+                <ImageBackground source={require('../assets/opc_n.png')} style={{width: '100%', height: Dimensions.get('window').height / 1.8}}>
+                    
+                    {
+                      selectPrimero && (
+                        <TouchableHighlight style={{position: 'absolute', top: 90, right: 260}} onPress={() => checkResult()} > 
+                          <Image source={require('../assets/pincel.png')} style={{width: 50, height: 50}} />
+                        </TouchableHighlight>
+                      )
+                    }
+                    <TouchableHighlight style={{position: 'absolute', top: 150, right: 260}} onPress={() => mark(1)} > 
+                        <Text style={{color: 'white', fontSize:25}}> Teal </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 290, right: 230}} onPress={() => navigation.navigate('Practice')} > 
-                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
+
+                    {
+                      selectSegundo && (
+                        <TouchableHighlight style={{position: 'absolute', top: 290, right: 260}} onPress={() => checkResult()} > 
+                            <Image source={require('../assets/pincel.png')} style={{width: 50, height: 50}} />
+                        </TouchableHighlight>
+                      )
+                    }
+                    <TouchableHighlight style={{position: 'absolute', top: 350, right: 230}} onPress={() => mark(2)} > 
+                        <Text style={{color: 'white', fontSize:25}}> Magenta </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 490, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
+                    
+                    {
+                        selectTercero && (
+                          <TouchableHighlight style={{position: 'absolute', top: 90, right: 70}} onPress={() => checkResult()} > 
+                              <Image source={require('../assets/pincel.png')} style={{width: 50, height: 50}} />
+                          </TouchableHighlight>
+                        )
+                    }
+                    <TouchableHighlight style={{position: 'absolute', top: 150, right: 30}} onPress={() => mark(3)} > 
+                        <Text style={{color: 'white', fontSize:25}}> Vermillion </Text>
                     </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 90, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.png')} style={{width: 30, height: 30}} />
+                    
+                    {
+                        selectCuarto && (
+                          <TouchableHighlight style={{position: 'absolute', top: 290, right: 70}} onPress={() => checkResult()}> 
+                              <Image source={require('../assets/pincel.png')} style={{width: 50, height: 50}} />
+                          </TouchableHighlight>
+                        )
+                    }
+                    <TouchableHighlight style={{position: 'absolute', top: 340, right: 50}} onPress={() => mark(4)} > 
+                        <Text style={{color: 'white', fontSize:25}}> Amber </Text>
                     </TouchableHighlight>
+
                 </ImageBackground>
             </View>
             <View style={styles.center}>
-              <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'red','blue']}>
-                  <Text style={styles.submitText}>Aprender</Text>
-                </LinearGradient>  
+              <TouchableHighlight style={styles.submit} onPress={() => checkResult()} > 
+                  <Text style={styles.submitText}>Comprobar</Text>
               </TouchableHighlight>
            </View>
             <StatusBar style="auto" />

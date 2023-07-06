@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Image, TouchableHighlight, ImageBackground, Text, TextInput, TouchableOpacity} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
+import { Dimensions } from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
 
 const ThirdExploreScreen = ({navigation}) => {
     const [sound, setSound] = React.useState();
@@ -33,6 +35,9 @@ const ThirdExploreScreen = ({navigation}) => {
         await sound.playAsync();
       }
     };
+    let checkResult = ()=> {
+        navigation.navigate('Logro', {Intento: 3})
+    }
     return (
       <View>
         <NavBar style={styles}>
@@ -45,7 +50,7 @@ const ThirdExploreScreen = ({navigation}) => {
         <View style={styles.container}>
             <View style={styles.center}>
                 <View style={{paddingTop: 15}}>
-                    <Text style={{fontSize: 25}}>Escucha y practica tu Pronunciación</Text>
+                    <Text style={{fontSize: 25}}>Escucha y practica tu Pronunciación:</Text>
                 </View>
             </View>  
             <View style={styles.center}>
@@ -57,26 +62,16 @@ const ThirdExploreScreen = ({navigation}) => {
               </View>
             </View>
             <View style={styles.center}>
-                <ImageBackground source={require('../assets/opc_n.png')} style={{width: '100%', height: Dimensions.get('window').height / 1.5}}>
-                    <TouchableHighlight style={{position: 'absolute', top: 90, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
-                    </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 290, right: 230}} onPress={() => navigation.navigate('Practice')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
-                    </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 490, right: 230}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
-                    </TouchableHighlight>
-                    <TouchableHighlight style={{position: 'absolute', top: 90, right: 100}} onPress={() => navigation.navigate('Home')} > 
-                        <Image source={require('../assets/pincel.jpg')} style={{width: 30, height: 30}} />
-                    </TouchableHighlight>
-                </ImageBackground>
+              <View style={{paddingTop:100}}>
+                <TouchableHighlight
+                  onPress={ () => onPress('yellow')} > 
+                  <Image source={require('../assets/microBlack.png')} style={{width: 60, height: 100}} />
+                </TouchableHighlight>
+              </View>
             </View>
-            <View style={styles.center}>
-              <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                <LinearGradient  start={{y:0, x:0}} end={{x:1, y:1}} colors={[ 'red','blue']}>
-                  <Text style={styles.submitText}>Aprender</Text>
-                </LinearGradient>  
+            <View style={styles.bot}>
+              <TouchableHighlight style={styles.submit} onPress={() => checkResult()} > 
+                  <Text style={styles.submitText}>Comprobar</Text>
               </TouchableHighlight>
            </View>
             <StatusBar style="auto" />
@@ -127,6 +122,12 @@ const ThirdExploreScreen = ({navigation}) => {
       alignItems: 'center',
       justifyContent: 'center',
       color: 'white',
+    },
+    bot:{
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'white',
+      paddingTop: 200
     },
     submitText: {
       color:'white',

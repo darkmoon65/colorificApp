@@ -8,6 +8,11 @@ import FirstExploreScreen from './src/FirstExploreScreen'
 import LoadingScreen from './src/LoadingScreen'
 import LogroScreen from './src/LogroScreen'
 import SecondExploreScreen from './src/SecondExploreScreen'
+import ThirdExploreScreen from './src/ThirdExploreScreen'
+import QuarterExploreScreen from './src/QuarterExploreScreen'
+import QuintaExploreScreen from './src/QuintaExploreScreen'
+import LastExploreScreen from './src/LastExploreScreen'
+import GanadorScreen from './src/GanadorScreen'
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -21,6 +26,11 @@ export default function App() {
         <Stack.Screen name="Practice"  component={PracticeScreen} />
         <Stack.Screen name="Logro"  component={LogroScreen} />
         <Stack.Screen name="SecondExplore"  component={SecondExploreScreen} />
+        <Stack.Screen name="ThirdExplore"  component={ThirdExploreScreen} />
+        <Stack.Screen name="QuarterExplore"  component={QuarterExploreScreen} />
+        <Stack.Screen name="QuintaExplore"  component={QuintaExploreScreen} />
+        <Stack.Screen name="LastExplore"  component={LastExploreScreen} />
+        <Stack.Screen name="Ganador"  component={GanadorScreen} />
       </Stack.Navigator>
         
     </NavigationContainer>

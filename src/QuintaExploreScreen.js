@@ -1,10 +1,10 @@
 import { Audio } from 'expo-av';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, TouchableHighlight, Text, TextInput, Pressable, Modal, Alert} from 'react-native';
+import { StyleSheet, View, Image, TouchableHighlight, ImageBackground, Text, TextInput, TouchableOpacity} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
 
-const FirstExploreScreen = ({navigation}) => {
+const QuintaExploreScreen = ({navigation}) => {
     const [sound, setSound] = React.useState();
     // Data input
     const [item1, setItem1] = useState("");
@@ -18,7 +18,6 @@ const FirstExploreScreen = ({navigation}) => {
     const [item9, setItem9] = useState("");
     const [item10, setItem10] = useState("");
     const [ocultarTexto, setOcultarTexto] = useState(true);
-    const [modalVisible, setModalVisible] = useState(false);
 
     let checkWrite = async (last) => {
       setItem10(last)
@@ -36,7 +35,7 @@ const FirstExploreScreen = ({navigation}) => {
         setItem10("");
         setOcultarTexto(true);
 
-        navigation.navigate('Logro', {Intento: 1})
+        navigation.navigate('Logro', {Intento: 5})
       }
     }
     useEffect(() => {
@@ -78,21 +77,12 @@ const FirstExploreScreen = ({navigation}) => {
             </NavButton>
         </NavBar>
         <View style={styles.container}>
-            {
-              ocultarTexto && (
-                <View style={styles.center}>
-                  <TouchableHighlight style={styles.submit} onPress={() => navigation.navigate('FirstExplore')} > 
-                    <Text style={styles.submitText}>VERMILLION</Text>
-                  </TouchableHighlight>
-                  <View style={{paddingTop: 15}}>
-                    <Text style={{fontSize: 25}}>Pronunciación: /vɚˈmɪl.jən/</Text>
-                  </View>
-                  <View style={{paddingTop: 15}}>
-                    <Text style={{fontSize: 25}}>Traducción: Bermellón</Text>
-                  </View>
+
+            <View style={styles.center}>
+                <View style={{paddingTop: 15}}>
+                    <Text style={{fontSize: 25}}>¿ Bermellón en Inglés? </Text>
                 </View>
-              )
-            }        
+            </View>  
             <View style={styles.imagenAudio}>
               <Image source={require('../assets/vermi.png')} style={{width: '60%', height: '100%'}}>
               </Image>
@@ -137,34 +127,6 @@ const FirstExploreScreen = ({navigation}) => {
                 </View>
               </View>
             </View>
-            <View style={styles.center}>
-              <View style={{paddingTop:60}}>
-                  <TouchableHighlight
-                    onPress={ () => setModalVisible(true) } > 
-                    <Image source={require('../assets/evaluate.png')} style={{width: 50, height: 50}} />
-                  </TouchableHighlight>
-              </View>
-            </View>
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => {
-                Alert.alert('Modal has been closed.');
-                setModalVisible(!modalVisible);
-              }}>
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                  <Text style={styles.modalText}>SABIAS QUE ...</Text>
-                  <Text style={styles.modalText}>Vermillion es una ciudad en el condado de Dakota?</Text>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}>
-                    <Text style={styles.textStyle}> Listo!</Text>
-                  </Pressable>
-                </View>
-              </View>
-            </Modal>
             <StatusBar style="auto" />
         </View>
       </View>
@@ -219,45 +181,7 @@ const FirstExploreScreen = ({navigation}) => {
       textAlign: 'center',
       fontSize: 30,
       letterSpacing: 2
-    },
-    modalView: {
-      margin: 20,
-      width: 400,
-      height: 400,
-      backgroundColor: '#fcf9a8',
-      borderRadius: 20,
-      padding: 35,
-      alignItems: 'center',
-      shadowColor: '#000',
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 4,
-      elevation: 5,
-    },
-    centeredView: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 22,
-    },
-    button: {
-      marginTop: 120,
-      alignItems: 'center',
-      borderRadius: 10,
-      width: 100,
-      padding: 10,
-      elevation: 2,
-    },
-    buttonClose: {
-      backgroundColor: 'white',
-    },
-    modalText: {
-      fontSize: 25,
-      paddingBottom: 30,
     }
   });
   
-  export default FirstExploreScreen
+  export default QuintaExploreScreen

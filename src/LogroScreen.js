@@ -1,16 +1,96 @@
-import { StyleSheet, Text, View, Image, TouchableHighlight, ImageBackground} from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableHighlight, ImageBackground, Modal, Pressable, Alert} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav';
 import { Dimensions } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
 import {LinearGradient} from 'expo-linear-gradient';
 
-const LogroScreen = ({navigation}) => {
-    useEffect( () => {
-        setTimeout(() => {
+const LogroScreen = ({route, navigation}) => {
+    const [modalVisible1, setModalVisible1] = useState(false);
+    const [modalVisible2, setModalVisible2] = useState(false);
+    const [modalVisible3, setModalVisible3] = useState(false);
+    const [modalVisible4, setModalVisible4] = useState(false);
+    const [modalVisible5, setModalVisible5] = useState(false);
+    const [modalVisible6, setModalVisible6] = useState(false);
+
+    useFocusEffect( React.useCallback(() => {  
+        console.log(route.params.Intento)
+        if ( route.params.Intento == 1 ){
+          setModalVisible1(true)
+          setTimeout(() => {
+            setModalVisible1(false)
+            setModalVisible2(false)
+            setModalVisible3(false)
+            setModalVisible4(false)
+            setModalVisible5(false)
+            setModalVisible6(false)
             navigation.navigate('SecondExplore')
-        }, 4000);
+          }, 4000);
         }
+        if ( route.params.Intento == 2 ){
+          setModalVisible2(true)
+          setTimeout(() => {
+            setModalVisible1(false)
+            setModalVisible2(false)
+            setModalVisible3(false)
+            setModalVisible4(false)
+            setModalVisible5(false)
+            setModalVisible6(false)
+            navigation.navigate('ThirdExplore')
+          }, 4000);
+        }
+        if ( route.params.Intento == 3 ){
+          setModalVisible3(true)
+          setTimeout(() => {
+            setModalVisible1(false)
+            setModalVisible2(false)
+            setModalVisible3(false)
+            setModalVisible4(false)
+            setModalVisible5(false)
+            setModalVisible6(false)
+            navigation.navigate('QuarterExplore')
+          }, 4000);
+        }
+        if ( route.params.Intento == 4 ){
+          setModalVisible4(true)
+          setTimeout(() => {
+            setModalVisible1(false)
+            setModalVisible2(false)
+            setModalVisible3(false)
+            setModalVisible4(false)
+            setModalVisible5(false)
+            setModalVisible6(false)
+            navigation.navigate('QuintaExplore')
+          }, 4000);
+        }
+        if ( route.params.Intento == 5 ){
+          setModalVisible5(true)
+          setTimeout(() => {
+            setModalVisible1(false)
+            setModalVisible2(false)
+            setModalVisible3(false)
+            setModalVisible4(false)
+            setModalVisible5(false)
+            setModalVisible6(false)
+            navigation.navigate('LastExplore')
+          }, 4000);
+        }
+        if ( route.params.Intento == 6 ){
+          setModalVisible6(true)
+          setTimeout(() => {
+            setModalVisible1(false)
+            setModalVisible2(false)
+            setModalVisible3(false)
+            setModalVisible4(false)
+            setModalVisible5(false)
+            setModalVisible6(false)
+            navigation.navigate('Ganador')
+          }, 4000);
+        }
+
+        }
+    , [route.params.Intento])
     )
     return (
         <View>
@@ -44,6 +124,85 @@ const LogroScreen = ({navigation}) => {
                 </ImageBackground>
                 <StatusBar style="auto" />
             </View>
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible1}
+            >
+              <View style={{position: 'absolute', top: 630, right: 100}}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Activity 1/6 </Text>
+                  <Text style={styles.modalText}>Listening and Speaking </Text>
+                </View>
+              </View>
+            </Modal>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible2}
+            >
+              <View style={{position: 'absolute', top: 490, right: 150}}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Activity 2/6 </Text>
+                  <Text style={styles.modalText}>Listening and Speaking </Text>
+                </View>
+              </View>
+            </Modal>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible3}
+            >
+              <View style={{position: 'absolute', top: 350, right: 100}}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Activity 3/6 </Text>
+                  <Text style={styles.modalText}>Listening and Speaking </Text>
+                </View>
+              </View>
+            </Modal>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible4}
+            >
+              <View style={{position: 'absolute', top: 250, right: 100}}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Activity 4/6 </Text>
+                  <Text style={styles.modalText}>Listening and Speaking </Text>
+                </View>
+              </View>
+            </Modal>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible5}
+            >
+              <View style={{position: 'absolute', top: 120, right: 100}}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Activity 5/6 </Text>
+                  <Text style={styles.modalText}>Listening and Speaking </Text>
+                </View>
+              </View>
+            </Modal>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible6}
+            >
+              <View style={{position: 'absolute', top: 50, right: 100}}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Activity 6/6 </Text>
+                  <Text style={styles.modalText}>Listening and Speaking </Text>
+                </View>
+              </View>
+            </Modal>
+
+
           </View>
     );
   };
@@ -109,6 +268,27 @@ const LogroScreen = ({navigation}) => {
       borderColor: "#fff",
       width: 120,
     },
+    centeredView: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: 22,
+    },
+    modalView: {
+      margin: 10,
+      backgroundColor: '#fcf9a8',
+      borderRadius: 20,
+      padding: 20,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+    }
   });
   
 export default LogroScreen
