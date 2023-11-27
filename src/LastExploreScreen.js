@@ -64,9 +64,11 @@ const LastExploreScreen = ({navigation}) => {
       <View>
         <NavBar style={styles}>
             <NavButton onPress={() => alert('Ejemplo modal')}>
-                <NavButtonText style={styles.text} >
-                    {"App"}
-                </NavButtonText>
+                <NavButton onPress={() =>  navigation.navigate('Home') }>
+                    <NavButtonText style={styles.text} >
+                    {"Home"}
+                    </NavButtonText>
+                </NavButton>
             </NavButton>
         </NavBar>
         <View style={styles.container}>

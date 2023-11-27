@@ -95,11 +95,11 @@ const LogroScreen = ({route, navigation}) => {
     return (
         <View>
             <NavBar style={styles}>
-                <NavButton onPress={() => alert('Ejemplo modal')}>
-                    <NavButtonText style={styles.text} >
-                        {"App"}
-                    </NavButtonText>
-                </NavButton>
+              <NavButton onPress={() =>  navigation.navigate('Home') }>
+                  <NavButtonText style={styles.text} >
+                    {"Home"}
+                  </NavButtonText>
+              </NavButton>
             </NavBar>
             <View style={styles.container}>
                 <ImageBackground source={require('../assets/WAY2.png')} style={{width: '100%', height: Dimensions.get('window').height / 1}}>

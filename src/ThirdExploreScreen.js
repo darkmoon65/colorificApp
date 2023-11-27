@@ -30,7 +30,7 @@ const ThirdExploreScreen = ({navigation}) => {
         setSound(sound);
         await sound.playAsync();
       }else {
-        const { sound } = await Audio.Sound.createAsync( require('../assets/yellow.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../assets/vermillion.mp3'));
         setSound(sound);
         await sound.playAsync();
       }
@@ -41,9 +41,9 @@ const ThirdExploreScreen = ({navigation}) => {
     return (
       <View>
         <NavBar style={styles}>
-            <NavButton onPress={() => alert('Ejemplo modal')}>
+            <NavButton onPress={() =>  navigation.navigate('Home') }>
                 <NavButtonText style={styles.text} >
-                    {"App"}
+                  {"Home"}
                 </NavButtonText>
             </NavButton>
         </NavBar>
@@ -56,7 +56,7 @@ const ThirdExploreScreen = ({navigation}) => {
             <View style={styles.center}>
               <View style={{paddingTop:60, paddingLeft:30}}>
                 <TouchableHighlight
-                  onPress={ () => onPress('yellow')} > 
+                  onPress={ () => onPress('vermillion')} > 
                   <Image source={require('../assets/sound.png')} style={{width: 50, height: 50}} />
                 </TouchableHighlight>
               </View>
@@ -64,7 +64,7 @@ const ThirdExploreScreen = ({navigation}) => {
             <View style={styles.center}>
               <View style={{paddingTop:100}}>
                 <TouchableHighlight
-                  onPress={ () => onPress('yellow')} > 
+                  onPress={ () => {}} > 
                   <Image source={require('../assets/microBlack.png')} style={{width: 60, height: 100}} />
                 </TouchableHighlight>
               </View>

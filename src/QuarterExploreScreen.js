@@ -1,10 +1,11 @@
 import { Audio } from 'expo-av';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Image, TouchableHighlight, ImageBackground, Text, TextInput, TouchableOpacity} from 'react-native';
+import { StyleSheet, View, Image, TouchableHighlight, ImageBackground, Text,  Pressable, Modal, Alert} from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import NavBar, { NavButton, NavButtonText, NavTitle } from 'react-native-nav'
 import { Dimensions } from 'react-native';
 import {LinearGradient} from 'expo-linear-gradient';
+import LottieView from 'lottie-react-native';
 
 const QuarterExploreScreen = ({navigation}) => {
     const [sound, setSound] = React.useState();
@@ -13,6 +14,8 @@ const QuarterExploreScreen = ({navigation}) => {
     const [selectTercero, setSelectTercero] = React.useState(false);
     const [selectCuarto, setSelectCuarto] = React.useState(false);
     const [Opcion, setOpcion] = React.useState(0);
+    const [modalMaloVisible, setModalMaloVisible] = useState(false);
+    const [modalBuenoVisible, setModalBuenoVisible] = useState(false);
     // Data input
 
     useEffect(() => {
@@ -35,7 +38,7 @@ const QuarterExploreScreen = ({navigation}) => {
         setSound(sound);
         await sound.playAsync();
       }else {
-        const { sound } = await Audio.Sound.createAsync( require('../assets/yellow.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../assets/vermillion.mp3'));
         setSound(sound);
         await sound.playAsync();
       }
@@ -63,9 +66,9 @@ const QuarterExploreScreen = ({navigation}) => {
     return (
       <View>
         <NavBar style={styles}>
-            <NavButton onPress={() => alert('Ejemplo modal')}>
+            <NavButton onPress={() =>  navigation.navigate('Home') }>
                 <NavButtonText style={styles.text} >
-                    {"App"}
+                  {"Home"}
                 </NavButtonText>
             </NavButton>
         </NavBar>
@@ -108,7 +111,7 @@ const QuarterExploreScreen = ({navigation}) => {
                         )
                     }
                     <TouchableHighlight style={{position: 'absolute', top: 150, right: 30}} onPress={() => mark(3)} > 
-                        <Text style={{color: 'white', fontSize:25}}> Vermillion </Text>
+                        <Text style={{color: 'white', fontSize:25}}> Bermellón </Text>
                     </TouchableHighlight>
                     
                     {
@@ -129,6 +132,62 @@ const QuarterExploreScreen = ({navigation}) => {
                   <Text style={styles.submitText}>Comprobar</Text>
               </TouchableHighlight>
            </View>
+           <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalMaloVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setModalMaloVisible(!modalMaloVisible);
+              }}>
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                <LottieView //IMÁGENES DE LOTTIE 
+                  source={require('../assets/lottie/guinoEmoji.json')} 
+                  autoPlay
+                  loop
+                  width={120}
+                  style={{position:'absolute', top: -90}}
+                  />
+                  <Text style={styles.modalText}>Casi lo logras</Text>
+                  <Text style={styles.modalText}>Animo, seguro que a la siguiente lo logras...</Text>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() => setModalMaloVisible(!modalMaloVisible)}>
+                    <Text style={styles.textStyle}> Intentalo de nuevo</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
+
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalBuenoVisible}
+              onRequestClose={() => {
+                Alert.alert('Modal has been closed.');
+                setModalBuenoVisible(!modalBuenoVisible);
+              }}>
+              <View style={styles.centeredView}>
+                <View style={styles.modalViewBueno}>
+                <LottieView //IMÁGENES DE LOTTIE 
+                  source={require('../assets/lottie/lentesEmoji.json')} 
+                  autoPlay
+                  loop
+                  width={120}
+                  style={{position:'absolute', top: -140}}
+                  />
+                  <Text style={styles.modalTextBueno}>Bien !!!</Text>
+                  <Text style={styles.modalTextBueno}>LOGRO DESBLOQUEADO</Text>
+                  <Text style={styles.modalTextBueno}>Felicidades, estás dentro del 40% de usuarios que acertaron ...</Text>
+                  <Pressable
+                    style={[styles.button, styles.buttonCloseBueno]}
+                    onPress={() => navigation.navigate('Logro', {Intento: 2})}>
+                    <Text style={styles.textStyle}> OK</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
             <StatusBar style="auto" />
         </View>
       </View>
@@ -183,6 +242,74 @@ const QuarterExploreScreen = ({navigation}) => {
       textAlign: 'center',
       fontSize: 30,
       letterSpacing: 2
+    },
+    modalView: {
+      margin: 20,
+      width: 400,
+      height: 300,
+      backgroundColor: 'white',
+      borderRadius: 20,
+      padding: 35,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+    },
+    modalViewBueno: {
+      margin: 20,
+      width: 400,
+      height: 400,
+      backgroundColor: 'white',
+      borderRadius: 20,
+      padding: 35,
+      alignItems: 'center',
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowOpacity: 0.25,
+      shadowRadius: 4,
+      elevation: 5,
+    },
+    centeredView: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      marginTop: 22,
+    },
+    button: {
+      marginTop: 20,
+      alignItems: 'center',
+      borderRadius: 10,
+      width: 220,
+      padding: 10,
+      elevation: 2,
+    },
+    buttonClose: {
+      backgroundColor: 'red',
+    },
+    modalText: {
+      fontSize: 25,
+      paddingBottom: 30,
+      color: 'red'
+    },
+    textStyle :{
+      color: 'white',
+      fontSize: 20
+    },
+    modalTextBueno: {
+      fontSize: 25,
+      paddingBottom: 30,
+      color: 'green'
+    },
+    buttonCloseBueno: {
+      backgroundColor: 'green',
     }
   });
   

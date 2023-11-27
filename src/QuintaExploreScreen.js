@@ -58,7 +58,7 @@ const QuintaExploreScreen = ({navigation}) => {
         setSound(sound);
         await sound.playAsync();
       }else {
-        const { sound } = await Audio.Sound.createAsync( require('../assets/yellow.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../assets/vermillion.mp3'));
         setSound(sound);
         await sound.playAsync();
       }
@@ -70,9 +70,9 @@ const QuintaExploreScreen = ({navigation}) => {
     return (
       <View>
         <NavBar style={styles}>
-            <NavButton onPress={() => alert('Ejemplo modal')}>
+            <NavButton onPress={() =>  navigation.navigate('Home') }>
                 <NavButtonText style={styles.text} >
-                    {"App"}
+                  {"Home"}
                 </NavButtonText>
             </NavButton>
         </NavBar>

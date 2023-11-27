@@ -59,7 +59,7 @@ const FirstExploreScreen = ({navigation}) => {
         setSound(sound);
         await sound.playAsync();
       }else {
-        const { sound } = await Audio.Sound.createAsync( require('../assets/yellow.mp4'));
+        const { sound } = await Audio.Sound.createAsync( require('../assets/vermillion.mp3'));
         setSound(sound);
         await sound.playAsync();
       }
@@ -71,9 +71,9 @@ const FirstExploreScreen = ({navigation}) => {
     return (
       <View>
         <NavBar style={styles}>
-            <NavButton onPress={() => alert('Ejemplo modal')}>
+            <NavButton onPress={() =>  navigation.navigate('Home') }>
                 <NavButtonText style={styles.text} >
-                    {"App"}
+                  {"Home"}
                 </NavButtonText>
             </NavButton>
         </NavBar>
@@ -205,7 +205,7 @@ const FirstExploreScreen = ({navigation}) => {
       paddingBottom: 10,
       borderRadius: 10,
       borderWidth: 0,
-      backgroundColor: 'green',
+      backgroundColor: '#E34234',
       borderColor: "#fff",
       width: 220,
     },
